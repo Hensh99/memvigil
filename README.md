@@ -79,7 +79,7 @@ Emitted at each interval with current memory usage statistics.
 
 Emitted when a heap snapshot is saved.
 
--filePath: The file path of the saved snapshot.
+- filePath: The file path of the saved snapshot.
 
 ## leakDetected
 
@@ -93,8 +93,6 @@ Emitted when an error occurs within the MemoryMonitor.
 
 - error: The error object.
 
-### License
-
-MIT
+---
 
 This file provides a comprehensive guide on how to install, use, and contribute to the `MemoryMonitor` library. Save this content as `README.md` in your project directory.
