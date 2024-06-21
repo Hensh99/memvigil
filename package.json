@@ -1,12 +1,21 @@
 {
-  "name": "mem-monitor",
+  "name": "memvigil",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A library to monitor memory usage and detect memory leaks in Node.js applications.",
+  "main": "MemoryMonitor.js",
   "scripts": {
     "test": "mocha"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hensh99/memvigil.git"
+  },
+  "keywords": [
+    "memory",
+    "monitor",
+    "memory leak",
+    "Node.js"
+  ],
   "author": "Mohamed Hany Zakaria",
   "license": "MIT",
   "dependencies": {
