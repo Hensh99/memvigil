@@ -1,17 +1,17 @@
-# MemoryMonitor.js
+# memvigil
 
 A Node.js library for monitoring memory usage and detecting memory leaks.
 
 ## Installation
 
 ```sh
-npm install mem-monitor
+npm install memvigil
 ```
 
 # Usage
 
 ```js
-const MemoryMonitor = require("mem-monitor");
+const MemoryMonitor = require("memvigil");
 
 const monitor = new MemoryMonitor(200 * 1024 * 1024); // Set threshold to 200MB
 
