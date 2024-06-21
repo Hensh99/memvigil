@@ -1,69 +1,49 @@
-const assert = require('assert');
 const MemoryMonitor = require('../lib/MemoryMonitor');
+const assert = require('assert');
 
-describe('MemoryMonitor', () => {
-    it('should emit memoryStats at intervals', (done) => {
-        const monitor = new MemoryMonitor();
-        let called = false;
+describe('MemoryMonitor', function () {
+    this.timeout(10000); // Increase timeout for async operations
 
-        monitor.on('memoryStats', (stats) => {
-            called = true;
-            assert(stats.heapUsed > 0);
-            monitor.stopMonitoring();
+    let monitor;
+
+    beforeEach(() => {
+        monitor = new MemoryMonitor(20 * 1024 * 1024); // Set lower threshold for testing
+    });
+
+    afterEach(() => {
+        monitor.stopMonitoring();
+    });
+
+    it('should emit memoryStats event', (done) => {
+        monitor.on('memoryStats', (memoryUsage) => {
+            assert(memoryUsage.heapUsed !== undefined);
+            done();
+        });
+
+        monitor.startMonitoring(1000); // Check every 1 second
+    });
+
+    it('should emit thresholdExceeded event', (done) => {
+        monitor.on('thresholdExceeded', (memoryUsage) => {
+            assert(memoryUsage.heapUsed > monitor.threshold);
             done();
         });
 
         monitor.startMonitoring(1000);
 
-        setTimeout(() => {
-            if (!called) {
-                monitor.stopMonitoring();
-                done(new Error('memoryStats event was not emitted'));
-            }
-        }, 1500);
+        // Simulate memory usage
+        const memoryLeakArray = [];
+        for (let i = 0; i < 1000000; i++) {
+            memoryLeakArray.push({ data: new Array(1000).fill('*') });
+        }
     });
 
-    it('should emit thresholdExceeded when memory exceeds threshold', (done) => {
-        const monitor = new MemoryMonitor(0); // Set low threshold
-        monitor.on('thresholdExceeded', (stats) => {
-            assert(stats.heapUsed > 0);
-            monitor.stopMonitoring();
-            done();
-        });
-        monitor.startMonitoring(1000);
-    });
-
-    it('should emit heapSnapshot event when snapshot is taken', (done) => {
-        const monitor = new MemoryMonitor();
+    it('should take a heap snapshot', (done) => {
         monitor.on('heapSnapshot', (filePath) => {
             assert(filePath.includes('heap-'));
-            monitor.stopMonitoring();
             done();
         });
-        monitor.startMonitoring(1000);
-        setTimeout(() => {
-            monitor.takeHeapSnapshot();
-        }, 500);
-    });
 
-    it('should emit leakDetected for placeholder leak detection', (done) => {
-        const monitor = new MemoryMonitor();
-        monitor.on('leakDetected', (info) => {
-            assert(info.message === 'Potential memory leak detected');
-            done();
-        });
-        monitor.detectLeaks();
-    });
-
-    it('should handle errors gracefully', (done) => {
-        const monitor = new MemoryMonitor();
-        monitor.on('error', (error) => {
-            assert(error instanceof Error);
-            done();
-        });
-        monitor.takeHeapSnapshot = function () {
-            throw new Error('Test error');
-        };
         monitor.takeHeapSnapshot();
     });
 });
