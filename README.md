@@ -41,38 +41,60 @@ monitor.startMonitoring();
 
 # API
 
-new MemoryMonitor(threshold)
-threshold: Memory usage threshold in bytes (default: 100MB).
-monitor.startMonitoring(interval)
-interval: Interval in milliseconds to check memory usage (default: 5000ms).
-monitor.stopMonitoring()
+## new MemoryMonitor(threshold)
+
+- threshold: Memory usage threshold in bytes (default: 100MB).
+
+## monitor.startMonitoring(interval)
+
+- interval: Interval in milliseconds to check memory usage (default: 5000ms).
+
+## monitor.stopMonitoring()
+
 Stop monitoring memory usage.
 
-monitor.takeHeapSnapshot()
+## monitor.takeHeapSnapshot()
+
 Take a heap snapshot and save it to a file.
 
-monitor.detectLeaks()
+## monitor.detectLeaks()
+
 Detect potential memory leaks (placeholder for actual detection logic).
 
 # Events
 
-thresholdExceeded
+## thresholdExceeded
+
 Emitted when memory usage exceeds the threshold.
 
-memoryUsage: The memory usage statistics.
-memoryStats
+- memoryUsage: The memory usage statistics.
+
+## memoryStats
+
 Emitted at each interval with current memory usage statistics.
 
-memoryUsage: The memory usage statistics.
-heapSnapshot
+- memoryUsage: The memory usage statistics.
+
+## heapSnapshot
+
 Emitted when a heap snapshot is saved.
 
-filePath: The file path of the saved snapshot.
-leakDetected
+-filePath: The file path of the saved snapshot.
+
+## leakDetected
+
 Emitted when a potential memory leak is detected.
 
-info: Information about the detected leak.
-error
+- info: Information about the detected leak.
+
+## error
+
 Emitted when an error occurs within the MemoryMonitor.
 
-error: The error object.
+- error: The error object.
+
+### License
+
+MIT
+
+This file provides a comprehensive guide on how to install, use, and contribute to the `MemoryMonitor` library. Save this content as `README.md` in your project directory.
