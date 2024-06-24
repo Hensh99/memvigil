@@ -73,10 +73,6 @@ Stop monitoring memory usage.
 
 Take a heap snapshot and save it to a file.
 
-## monitor.detectLeaks()
-
-Detect potential memory leaks (placeholder for actual detection logic).
-
 ## monitor.getMemoryUsageReport()
 
 Get a report of the historical memory usage data.
