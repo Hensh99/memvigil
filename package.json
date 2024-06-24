@@ -1,6 +1,6 @@
 {
   "name": "memvigil",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A library to monitor memory usage and detect memory leaks in Node.js applications.",
   "main": "MemoryMonitor.js",
   "scripts": {
