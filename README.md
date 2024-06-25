@@ -28,10 +28,6 @@ monitor.on("heapSnapshot", (filePath) => {
   console.log(`Heap snapshot saved to ${filePath}`);
 });
 
-monitor.on("leakDetected", (info) => {
-  console.log("Leak detected:", info);
-});
-
 monitor.on("error", (error) => {
   console.error("Error:", error);
 });
@@ -104,12 +100,6 @@ Emitted at each interval with current memory usage statistics.
 Emitted when a heap snapshot is saved.
 
 - filePath: The file path of the saved snapshot.
-
-## leakDetected
-
-Emitted when a potential memory leak is detected.
-
-- info: Information about the detected leak.
 
 ## error
 
