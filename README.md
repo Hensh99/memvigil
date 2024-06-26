@@ -1,6 +1,6 @@
 # memvigil
 
-A Node.js library for monitoring memory usage and detecting memory leaks.
+A lightweight Node.js library for real-time memory monitoring and leak detection, with automatic heap snapshots and event-driven alerts.
 
 ## Installation
 
@@ -8,7 +8,7 @@ A Node.js library for monitoring memory usage and detecting memory leaks.
 npm install memvigil
 ```
 
-# Usage
+## Usage
 
 ```js
 const MemoryMonitor = require("memvigil");
@@ -51,62 +51,64 @@ monitor.notifyOnThresholdExceeded((message) => {
 });
 ```
 
-# API
+## API
 
-## new MemoryMonitor(threshold)
+1. new MemoryMonitor(threshold)
 
 - threshold: Memory usage threshold in bytes (default: 100MB).
 
-## monitor.startMonitoring(interval)
+2. monitor.startMonitoring(interval)
 
 - interval: Interval in milliseconds to check memory usage (default: 5000ms).
 
-## monitor.stopMonitoring()
+3. monitor.stopMonitoring()
 
-Stop monitoring memory usage.
+- Stop monitoring memory usage.
 
-## monitor.takeHeapSnapshot()
+4. monitor.takeHeapSnapshot()
 
-Take a heap snapshot and save it to a file.
+- Take a heap snapshot and save it to a file.
 
-## monitor.getMemoryUsageReport()
+5. monitor.getMemoryUsageReport()
 
-Get a report of the historical memory usage data.
+- Get a report of the historical memory usage data.
 
-## monitor.clearHistory()
+6. monitor.clearHistory()
 
-Clear the historical memory usage data.
+- Clear the historical memory usage data.
 
-## monitor.notifyOnThresholdExceeded(notificationMethod)
+7. monitor.notifyOnThresholdExceeded(notificationMethod)
 
-Notify users when memory threshold is exceeded using the provided method.
+- Notify users when memory threshold is exceeded using the provided method.
 
-# Events
+<hr>
 
-## thresholdExceeded
+## Events
 
-Emitted when memory usage exceeds the threshold.
+1. thresholdExceeded
 
-- memoryUsage: The memory usage statistics.
-
-## memoryStats
-
-Emitted at each interval with current memory usage statistics.
+- Emitted when memory usage exceeds the threshold.
 
 - memoryUsage: The memory usage statistics.
 
-## heapSnapshot
+2. memoryStats
 
-Emitted when a heap snapshot is saved.
+- Emitted at each interval with current memory usage statistics.
+
+- memoryUsage: The memory usage statistics.
+
+3. heapSnapshot
+
+- Emitted when a heap snapshot is saved.
 
 - filePath: The file path of the saved snapshot.
 
-## error
+4. error
 
-Emitted when an error occurs within the MemoryMonitor.
+- Emitted when an error occurs within the MemoryMonitor.
 
 - error: The error object.
 
 ---
 
-This file provides a comprehensive guide on how to install, use, and contribute to the `MemoryMonitor` library. Save this content as `README.md` in your project directory.
+<b> This file provides a comprehensive guide on how to install, use, and contribute to the `memvigil` library. Save this content as `README.md` in your project directory.</b>
