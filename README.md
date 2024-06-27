@@ -32,11 +32,18 @@ monitor.on("error", (error) => {
   console.error("Error:", error);
 });
 
+monitor.on("leakDetected", (details) => {
+  console.log("Leak detected:", details);
+});
+
 // Start monitoring with a custom interval of 10 seconds
 monitor.startMonitoring(10000);
 
 // Take a heap snapshot manually
 monitor.takeHeapSnapshot();
+
+// Detect memory leaks
+monitor.detectLeaks();
 
 // Get a report of historical memory usage
 const report = monitor.getMemoryUsageReport();
