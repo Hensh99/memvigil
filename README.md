@@ -81,6 +81,10 @@ monitor.notifyOnThresholdExceeded((message) => {
 
 - Notify users when memory threshold is exceeded using the provided method.
 
+8. monitor.detectLeaks()
+
+- Detect potential memory leaks and emit an event with the details.
+
 <hr>
 
 ## Events
@@ -103,7 +107,13 @@ monitor.notifyOnThresholdExceeded((message) => {
 
 - filePath: The file path of the saved snapshot.
 
-4. error
+4. leakDetected
+
+- Emitted when a potential memory leak is detected.
+
+- details: The details of the detected leak.
+
+5. error
 
 - Emitted when an error occurs within the MemoryMonitor.
 

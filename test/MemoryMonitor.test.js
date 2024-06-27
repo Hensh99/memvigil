@@ -83,4 +83,14 @@ describe('MemoryMonitor', function () {
             memoryLeakArray.push({ data: new Array(1000).fill('*') });
         }
     });
+
+    it('should detect potential memory leaks', (done) => {
+        monitor.on('leakDetected', (details) => {
+            assert(details.message.includes('Potential memory leak detected'));
+            done();
+        });
+
+        // Call detectLeaks to simulate a leak detection
+        monitor.detectLeaks();
+    });
 });
