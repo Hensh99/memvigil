@@ -1,6 +1,5 @@
-const MemoryMonitor = require("memvigil");
+const MemoryMonitor = require("./MemoryMonitor");
 
-// Create a new memory monitor with a 200MB threshold
 const monitor = new MemoryMonitor(200 * 1024 * 1024);
 
 monitor.on("thresholdExceeded", (memoryUsage) => {
@@ -11,8 +10,12 @@ monitor.on("memoryStats", (memoryUsage) => {
     console.log("Memory stats:", memoryUsage);
 });
 
-monitor.on("heapSnapshot", (filePath) => {
-    console.log(`Heap snapshot saved to ${filePath}`);
+monitor.on("cpuStats", (cpuUsage) => {
+    console.log("CPU stats:", cpuUsage);
+});
+
+monitor.on("heapSnapshot", (filePath, automatic) => {
+    console.log(`Heap snapshot ${automatic ? 'automatically ' : ''}saved to ${filePath}`);
 });
 
 monitor.on("error", (error) => {
@@ -23,23 +26,28 @@ monitor.on("leakDetected", (details) => {
     console.log("Leak detected:", details);
 });
 
-// Start monitoring with a custom interval of 10 seconds
-monitor.startMonitoring(10000);
-
-// Take a heap snapshot manually
-monitor.takeHeapSnapshot();
-
-// Detect memory leaks
-monitor.detectLeaks();
-
-// Get a report of historical memory usage
-const report = monitor.getMemoryUsageReport();
-console.log("Memory Usage Report:", report);
-
-// Clear historical memory usage data
-monitor.clearHistory();
-
-// Set up a custom notification method for threshold exceeded
-monitor.notifyOnThresholdExceeded((message) => {
-    console.log("Custom Notification:", message);
+monitor.on("warning", (message) => {
+    console.warn("Warning:", message);
 });
+
+monitor.on("info", (message) => {
+    console.info("Info:", message);
+});
+
+monitor.startMonitoring(10000);
+monitor.takeHeapSnapshot();
+monitor.detectLeaks();
+monitor.checkNodeCompatibility();
+
+setInterval(() => {
+    console.log("Memory breakdown:", monitor.getMemoryBreakdown());
+    console.log("GC report:", monitor.getGCReport());
+    console.log("Performance impact:", monitor.getPerformanceImpact(), "ms");
+    monitor.automaticHeapDump(0.8);
+}, 30000);
+
+// Example of creating a memory leak for demonstration
+const leakyArray = [];
+setInterval(() => {
+    leakyArray.push(new Array(1000000).fill('leaky'));
+}, 1000);
