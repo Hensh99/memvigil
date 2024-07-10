@@ -1,7 +1,7 @@
 {
   "name": "memvigil",
-  "version": "1.0.4",
-  "description": "A library to monitor memory usage and detect memory leaks in Node.js applications.",
+  "version": "1.0.5",
+  "description": "A comprehensive Node.js library for advanced memory management and performance monitoring. memvigil offers real-time memory and CPU usage tracking, automatic leak detection, and heap analysis tools to help developers optimize application performance and prevent memory-related issues.",
   "main": "MemoryMonitor.js",
   "scripts": {
     "test": "mocha"
@@ -14,7 +14,11 @@
     "memory",
     "monitor",
     "memory leak",
-    "Node.js"
+    "Node.js",
+    "cpu",
+    "performance",
+    "heap snapshot",
+    "garbage collection"
   ],
   "author": "Mohamed Hany Zakaria",
   "license": "MIT",
