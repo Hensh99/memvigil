@@ -23,6 +23,7 @@
   "author": "Mohamed Hany Zakaria",
   "license": "MIT",
   "dependencies": {
+    "axios": "^1.7.2",
     "events": "^3.3.0",
     "fs": "^0.0.1-security",
     "v8": "^0.1.0"
