@@ -17,10 +17,11 @@ jobs:
         with:
           node-version: '14'
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Fetch npm downloads
-        run: |
-          npm install -g axios
-          node fetch-downloads.js
+        run: node fetch-downloads.js
 
       - name: Commit changes
         run: |
