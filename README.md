@@ -2,6 +2,8 @@
 
 A comprehensive Node.js library for advanced memory management and performance monitoring. memvigil offers real-time memory and CPU usage tracking, automatic leak detection, and heap analysis tools to help developers optimize application performance and prevent memory-related issues.
 
+![npm](https://img.shields.io/npm/dt/memvigil)
+
 ## Key Features:
 
 - Real-time memory and CPU usage monitoring
