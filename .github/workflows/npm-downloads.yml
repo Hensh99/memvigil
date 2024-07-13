@@ -29,4 +29,4 @@ jobs:
           git config --local user.name "Mohamed Hany"
           git add downloads.md
           git commit -m "Update npm downloads"
-          git push https://username:${{ secrets.PAT }}@github.com/Hensh99/memvigil.git HEAD:main
+          git push https://Hensh99:${{ secrets.PAT }}@github.com/Hensh99/memvigil.git HEAD:main
