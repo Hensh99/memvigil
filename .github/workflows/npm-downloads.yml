@@ -2,7 +2,7 @@ name: Update npm downloads
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs every day at midnight
+    - cron: "0 0 * * *" # Runs every day at midnight
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "14"
 
       - name: Install dependencies
         run: npm install
@@ -23,10 +23,10 @@ jobs:
       - name: Fetch npm downloads
         run: node fetch-downloads.js
 
-      - name: Commit changes
+      - name: Commit and push changes
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.email "mohamedhany.mh.1999@gmail.com"
+          git config --local user.name "Mohamed Hany"
           git add downloads.md
           git commit -m "Update npm downloads"
-          git push
+          git push https://username:${{ secrets.PAT }}@github.com/Hensh99/memvigil.git HEAD:main
