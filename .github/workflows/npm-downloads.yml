@@ -24,6 +24,9 @@ jobs:
         run: node fetch-downloads.js
 
       - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAT: ${{ secrets.PAT }}
         run: |
           git config --local user.email "mohamedhany.mh.1999@gmail.com"
           git config --local user.name "Mohamed Hany"
