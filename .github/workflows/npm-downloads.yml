@@ -32,4 +32,5 @@ jobs:
           git config --local user.name "Mohamed Hany"
           git add downloads.md
           git commit -m "Update npm downloads"
-          git push https://Hensh99:${{ secrets.PAT }}@github.com/Hensh99/memvigil.git HEAD:main
+          git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/Hensh99/memvigil.git
+          git push origin HEAD:main
