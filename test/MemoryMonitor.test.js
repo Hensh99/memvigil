@@ -93,48 +93,6 @@ describe('MemoryMonitor', function() {
         });
     });
 
-    // describe('Monitoring', function() {
-    //     it('should start monitoring with default interval', function(done) {
-    //         let eventFired = false;
-    //         monitor.on('memoryStats', () => {
-    //             eventFired = true;
-    //             done();
-    //         });
-    //         monitor.startMonitoring();
-    //     });
-
-    //     it('should stop monitoring when requested', function(done) {
-    //         monitor.startMonitoring(100);
-    //         setTimeout(() => {
-    //             monitor.stopMonitoring();
-    //             assert.strictEqual(monitor.interval, null);
-    //             done();
-    //         }, 200);
-    //     });
-
-    //     it('should respect maxHistorySize limit', function(done) {
-    //         const smallMonitor = new MemoryMonitor(20 * 1024 * 1024, 3);
-    //         smallMonitor.startMonitoring(100);
-            
-    //         setTimeout(() => {
-    //             const history = smallMonitor.getMemoryUsageReport();
-    //             assert(history.length <= 3);
-    //             smallMonitor.stopMonitoring();
-    //             done();
-    //         }, 500);
-    //     });
-
-    //     it('should emit thresholdExceeded event', function(done) {
-    //         const lowThresholdMonitor = new MemoryMonitor(1024, 100); // Very low threshold
-    //         lowThresholdMonitor.on('thresholdExceeded', (memoryUsage) => {
-    //             assert(memoryUsage.heapUsed > 1024);
-    //             lowThresholdMonitor.stopMonitoring();
-    //             done();
-    //         });
-    //         lowThresholdMonitor.startMonitoring(100);
-    //     });
-    // });
-
     describe('Monitoring', function() {
         it('should stop monitoring when requested', function(done) {
             monitor.startMonitoring(1000); // Changed from 100 to 1000
@@ -167,31 +125,6 @@ describe('MemoryMonitor', function() {
             lowThresholdMonitor.startMonitoring(1000); // Changed from 100 to 1000
         });
     });
-
-    // describe('Memory Stats', function() {
-    //     it('should collect memory usage data', function(done) {
-    //         monitor.startMonitoring(100);
-    //         setTimeout(() => {
-    //             const report = monitor.getMemoryUsageReport();
-    //             assert(Array.isArray(report));
-    //             assert(report.length > 0);
-    //             assert(report[0].memoryUsage);
-    //             done();
-    //         }, 200);
-    //     });
-
-    //     it('should collect CPU usage data', function(done) {
-    //         monitor.startMonitoring(100);
-    //         setTimeout(() => {
-    //             const report = monitor.getCpuUsageReport();
-    //             assert(Array.isArray(report));
-    //             assert(report.length > 0);
-    //             assert(typeof report[0].cpuUsage.user === 'number');
-    //             assert(typeof report[0].cpuUsage.system === 'number');
-    //             done();
-    //         }, 200);
-    //     });
-    // });
 
     describe('Memory Stats', function() {
         it('should collect memory usage data', function(done) {
