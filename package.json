@@ -1,10 +1,12 @@
 {
   "name": "memvigil",
-  "version": "1.0.5",
-  "description": "A comprehensive Node.js library for advanced memory management and performance monitoring. memvigil offers real-time memory and CPU usage tracking, automatic leak detection, and heap analysis tools to help developers optimize application performance and prevent memory-related issues.",
+  "version": "1.1.0",
+  "description": "A comprehensive Node.js memory management and monitoring library with real-time tracking capabilities.",
   "main": "MemoryMonitor.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/**/*.test.js",
+    "test:watch": "mocha test/**/*.test.js --watch",
+    "test:coverage": "nyc mocha test/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,7 @@
   "devDependencies": {
     "chai": "^5.1.1",
     "mocha": "^10.4.0",
-    "sinon": "^18.0.0"
+    "sinon": "^18.0.0",
+    "nyc": "^15.1.0"
   }
 }
