@@ -9,8 +9,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build",
+    "build": "echo 'No build step needed - using JavaScript with type definitions'",
+    "prepublishOnly": "npm test",
     "test": "mocha test/**/*.test.js",
     "test:watch": "mocha test/**/*.test.js --watch",
     "test:coverage": "nyc mocha test/**/*.test.js",
